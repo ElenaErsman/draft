@@ -1,0 +1,10 @@
+name: david-webservice-client
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pandas
+  - pip
+  - pip:
+      - suds-py3 

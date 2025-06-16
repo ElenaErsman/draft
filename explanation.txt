@@ -1,0 +1,46 @@
+Here’s a quick orientation to every item in the PythonClient-1.2 folder.
+SOURCE FILES (Python)
+DAVIDWebService_Client.py
+Minimal “hello-world” client.
+Shows how to:
+open the DAVID SOAP WSDL with suds
+authenticate with your registered e-mail
+upload a gene list (taken from the first command-line argument)
+print the server’s default annotation categories.
+Doesn’t write a report file – it’s mainly a connectivity/self-test script.
+
+tableReport.py
+Uploads the gene list and asks DAVID for a full Table Report (gene-by-gene annotation table).
+Optionally sets the annotation categories you want included.
+Writes the result to list1.tableReport.txt.
+
+chartReport.py
+Generates a Chart Report (term-by-term functional enrichment table).
+Controls the EASE/P-value threshold (thd) and minimum gene count (ct).
+Output: list1.chartReport.txt.
+
+termClusteringReport.py
+Retrieves a Term/Annotation-cluster Report (DAVID’s clustering of related enriched terms).
+You can tune overlap, seed, linkage and kappa parameters.
+Output: list1.termClusteringReport.txt.
+
+geneClusteringReport.py
+Requests a Gene Cluster Report (clustering of genes based on annotation similarity).
+Parameters similar to the term-cluster script.
+Output: list1.geneClusterReport.txt.
+
+SUPPORT / DATA FILES
+README.txt
+One-page guide explaining prerequisites (registering an e-mail, installing suds) and the basic workflow (download, edit, run).
+demolist2.txt
+Demo input list – 163 Affymetrix probe IDs, one per line.
+Passed as the single argument (python … demolist2.txt) to each script above.
+8-11. list1.chartReport.txt, list1.tableReport.txt, list1.termClusteringReport.txt, list1.geneClusterReport.txt
+Sample outputs generated when the author ran the four report scripts on demolist2.txt.
+Handy for seeing the expected file format without actually hitting the web service.
+
+HOW THEY FIT TOGETHER
+Pick/prepare your own gene list (or reuse demolist2.txt).
+Run one of the report scripts; they all establish a SOAP connection, authenticate, upload the list, call the relevant DAVID method, then save the text report.
+Inspect/edit parameters (e-mail, id type, category list, clustering thresholds) as needed.
+That’s the full inventory – use whichever script corresponds to the report type you need, and the sample data/output files serve as templates for your own runs.
